@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
     body{
         font-size: 62.5%;
         font-family:'Poppins',sans-serif;
-        background-color: ${({ theme }) => theme.color.body};
+        background-color: ${({ theme }) => theme.colors.body};
     }
 
 
