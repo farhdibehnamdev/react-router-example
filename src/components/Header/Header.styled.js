@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledHeader = styled.header`
   background-color: ${({ theme }) => theme.colors.header};
-  padding: 30px;
+  padding: 20px;
   max-width: 100%;
 `;
 
