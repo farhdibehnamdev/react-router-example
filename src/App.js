@@ -5,6 +5,7 @@ import GlobalStyles from "./components/GlobalStyles";
 import Header from "./components/Header/Header";
 import Container from "./components/Container.styled";
 import Products from "./components/Products/products";
+import Product from "./components/Products/Product";
 import ProductsIndex from "./components/Products/ProductsIndex";
 import Admin from "./components/Admin/admin";
 
@@ -29,6 +30,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Products />}>
                 <Route path="/" element={<ProductsIndex />} />
+                <Route path="product/:id" element={<Product />} />
               </Route>
               <Route path="/admin" element={<Admin />} />
             </Routes>
