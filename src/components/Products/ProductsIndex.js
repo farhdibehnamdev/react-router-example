@@ -24,7 +24,7 @@ const ProductsIndex = function () {
 
   const data = function () {
     const rows = [...Array(Math.ceil(products.length / 7))];
-    const productRows = rows.map((item, index) =>
+    const productRows = rows.map((_, index) =>
       products.slice(index * 4, index * 4 + 4)
     );
 

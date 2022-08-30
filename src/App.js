@@ -1,13 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./components/GlobalStyles";
 import Header from "./components/Header/Header";
 import Container from "./components/Container.styled";
 import Products from "./components/Products/products";
-import Product from "./components/Products/Product";
-import ProductsIndex from "./components/Products/ProductsIndex";
 import Admin from "./components/Admin/admin";
+import ProtectedRoute from "./components/common/ProtectedRoute";
 
 const App = () => {
   const theme = {
@@ -28,11 +32,15 @@ const App = () => {
           <Header />
           <Container>
             <Routes>
-              <Route path="/" element={<Products />}>
-                <Route path="/" element={<ProductsIndex />} />
-                <Route path="product/:id" element={<Product />} />
-              </Route>
-              <Route path="/admin" element={<Admin />} />
+              <Route path="/*" element={<Products />} />
+              <Route
+                path="/admin*"
+                element={<ProtectedRoute redirectTo="/" />}
+              />
+              {/* <Route element={<ProtectedRoute redirectTo="/" />}>
+                
+              </Route> */}
+              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </Container>
         </Router>
