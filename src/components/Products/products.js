@@ -5,7 +5,7 @@ const Products = function () {
   return (
     <Routes>
       <Route path="/" element={<ProductsIndex />} />
-      <Route path="product/:id" element={<Product />} />
+      <Route path=":id" element={<Product />} />
     </Routes>
   );
 };

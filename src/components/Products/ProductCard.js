@@ -8,35 +8,37 @@ import { Link } from "react-router-dom";
 const ProductCard = function ({ products }) {
   return (
     <Flex statusPosition="center">
-      {products.map((item) => (
-        <Link key={item.id} to={`product/${item.id}`}>
-          <StyledProduct key={item.id}>
-            <StyledImage src={`./assets/images/${item.id}.jpg`} alt="" />
-            <TextContainer>
-              <p>{item.brand}</p>
-              <h3>{item.title}</h3>
-              <p>
-                {item.description.length > 30
-                  ? `${item.description.slice(0, 30)}...`
-                  : item.description}
-              </p>
-              <hr />
-              <Flex>
-                <div>
-                  <span style={{ textDecoration: "line-through" }}>
-                    {item.price}
-                  </span>
-                  <span>{item.discountPercentage}</span>
-                </div>
-                <div>
-                  <FaHeart />
-                  <FaStore />
-                </div>
-              </Flex>
-            </TextContainer>
-          </StyledProduct>
-        </Link>
-      ))}
+      {products.map((item) => {
+        return (
+          <Link key={item.id} to={`${item.id}`}>
+            <StyledProduct key={item.id}>
+              <StyledImage src={`./assets/images/${item.id}.jpg`} alt="" />
+              <TextContainer>
+                <p>{item.brand}</p>
+                <h3>{item.title}</h3>
+                <p>
+                  {item.description.length > 30
+                    ? `${item.description.slice(0, 30)}...`
+                    : item.description}
+                </p>
+                <hr />
+                <Flex>
+                  <div>
+                    <span style={{ textDecoration: "line-through" }}>
+                      {item.price}
+                    </span>
+                    <span>{item.discountPercentage}</span>
+                  </div>
+                  <div>
+                    <FaHeart />
+                    <FaStore />
+                  </div>
+                </Flex>
+              </TextContainer>
+            </StyledProduct>
+          </Link>
+        );
+      })}
     </Flex>
   );
 };
