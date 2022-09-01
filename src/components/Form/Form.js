@@ -1,49 +1,47 @@
-import { useState } from "react";
 import StyledButton from "../Button.styled";
+import Flex from "../Flex.styled";
 import StyledForm from "./Form.styled";
 
-const Form = function ({ addProduct }) {
-  console.log("hoo");
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState("");
-  const handleChange = function () {
-    if (title && price && description) {
-      const product = {
-        title,
-        price,
-        description,
-      };
-      addProduct(product);
-    }
-  };
+const Form = function ({ form, updateField, addProduct, updateProduct }) {
   return (
     <StyledForm>
       <input
         name="title"
         placeholder="Title"
         type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        defaultValue={form.title}
+        onChange={(e) => updateField({ name: "title", value: e.target.value })}
       />
       <input
-        name="price"
+        name="discountPercentage"
         placeholder="Price"
         type="number"
-        value={price}
-        onChange={(e) => setPrice(Number.parseInt(e.target.value, 10))}
+        defaultValue={form.discountPercentage}
+        onChange={(e) =>
+          updateField({
+            name: "discountPercentage",
+            value: Number.parseInt(e.target.value, 10),
+          })
+        }
       />
       <textarea
         name="description"
         placeholder="Description"
         cols="50"
         rows="10"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        defaultValue={form.description}
+        onChange={(e) =>
+          updateField({ name: "description", value: e.target.value })
+        }
       />
-      <StyledButton type="button" onClick={handleChange}>
-        Submit
-      </StyledButton>
+      <Flex>
+        <StyledButton type="button" onClick={addProduct}>
+          Add
+        </StyledButton>
+        <StyledButton type="button" onClick={updateProduct}>
+          Update
+        </StyledButton>
+      </Flex>
     </StyledForm>
   );
 };
