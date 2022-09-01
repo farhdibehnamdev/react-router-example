@@ -4,7 +4,8 @@ import { FaHeart, FaStore } from "react-icons/fa";
 import Flex from "../Flex.styled";
 import StyledImage from "../Image.styled";
 import { useNavigate, useParams } from "react-router-dom";
-import StyledButton from "../Button/Button.styled";
+import StyledButton from "../Button.styled";
+import { getProduct } from "../../services/ProductServices";
 
 const Product = function () {
   const [product, setProduct] = useState({});
@@ -13,12 +14,9 @@ const Product = function () {
   useEffect(() => {
     const fetchData = async function () {
       try {
-        const data = await fetch(`https://dummyjson.com/products/${id}`);
-        if (data.ok) {
-          const response = await data.json();
-          if (response) {
-            setProduct(response);
-          }
+        const response = await getProduct(id);
+        if (response) {
+          setProduct(response);
         } else {
           throw new Error("something wrong....");
         }
@@ -36,7 +34,7 @@ const Product = function () {
       </StyledButton>
       <Flex statusPosition="center">
         <StyledProduct key={product.id}>
-          <StyledImage src={product.thumbnail} alt="" />
+          <StyledImage src={`./assets/images/${product.id}.jpg`} alt="" />
           <p>{product.brand}</p>
           <h3>{product.title}</h3>
           <p>{product.description}</p>
