@@ -54,3 +54,17 @@ export const updateProduct = async function (payload) {
   }
   throw new Error("Something went wrong...");
 };
+
+export const deleteProduct = async function (id) {
+  try {
+    const options = { method: "DELETE" };
+    const response = await fetch(
+      `http://localhost:5000/products/${id}`,
+      options
+    );
+    if (response.ok) return await response.json();
+    else throw new Error("Something went wrong...");
+  } catch (error) {
+    console.warn(error);
+  }
+};
