@@ -2,7 +2,14 @@ import StyledButton from "../Button.styled";
 import Flex from "../Flex.styled";
 import StyledForm from "./Form.styled";
 
-const Form = function ({ form, updateField, addProduct, updateProduct }) {
+const Form = function ({
+  form,
+  updateField,
+  addProduct,
+  updateProduct,
+  deleteProduct,
+  isEdit,
+}) {
   return (
     <StyledForm>
       <input
@@ -35,12 +42,21 @@ const Form = function ({ form, updateField, addProduct, updateProduct }) {
         }
       />
       <Flex>
-        <StyledButton type="button" onClick={addProduct}>
-          Add
-        </StyledButton>
-        <StyledButton type="button" onClick={updateProduct}>
-          Update
-        </StyledButton>
+        {!isEdit && (
+          <StyledButton type="button" onClick={addProduct}>
+            Add
+          </StyledButton>
+        )}
+        {isEdit && (
+          <>
+            <StyledButton type="button" onClick={updateProduct}>
+              Update
+            </StyledButton>
+            <StyledButton type="button" onClick={deleteProduct}>
+              Delete
+            </StyledButton>
+          </>
+        )}
       </Flex>
     </StyledForm>
   );

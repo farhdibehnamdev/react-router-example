@@ -2,22 +2,26 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   addProduct,
+  deleteProduct,
   getProduct,
   updateProduct,
 } from "../../services/ProductServices";
 import Form from "../Form/Form";
 
-const ProductEdit = function () {
+const ProductEdit = function ({ isEdit }) {
   const [form, setForm] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    setForm({
-      title: "",
-      price: 0,
-      description: "",
-    });
+    if (!isEdit) {
+      setForm({
+        title: "",
+        price: 0,
+        description: "",
+      });
+      return;
+    }
 
     const fetchData = async function () {
       try {
@@ -54,12 +58,26 @@ const ProductEdit = function () {
     }
   };
 
+  const deleteProductHandler = async function () {
+    if (!window.confirm(`Do you want to Delete ${form.title} product.`)) {
+      return;
+    }
+    try {
+      await deleteProduct(form.id);
+      navigate("/admin");
+    } catch (error) {
+      console.warn(error);
+    }
+  };
+
   return (
     <Form
       addProduct={() => addProductHandler()}
       updateProduct={() => updateProductHandler()}
       form={form}
       updateField={updateField}
+      deleteProduct={deleteProductHandler}
+      isEdit={isEdit}
     />
   );
 };
