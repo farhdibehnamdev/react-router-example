@@ -22,6 +22,7 @@
       "brand": "Apple",
       "category": "smartphones"
     },
+
     {
       "id": 3,
       "title": "Samsung Universe 555",
@@ -219,36 +220,6 @@
       "stock": 140,
       "brand": "Fair & Clear",
       "category": "skincare"
-    },
-    {
-      "title": "xiaomi poco plus",
-      "price": 123,
-      "description": "This is awesome phone you saw in your life.",
-      "id": 21
-    },
-    {
-      "title": "lg dr43",
-      "price": 545,
-      "description": "LG Smarthphone is a powerful phone.",
-      "id": 22
-    },
-    {
-      "title": "sfsdf",
-      "price": 5656,
-      "description": "dgdfgdfg",
-      "id": 23
-    },
-    {
-      "title": "ccccccsdf",
-      "price": 54656,
-      "description": "dfsgsgertdssfdghrfhfrh",
-      "id": 24
-    },
-    {
-      "title": "ccccccsdf444",
-      "price": 546562342,
-      "description": "dsfgshgssdrftdsg",
-      "id": 25
     }
   ]
 }
